@@ -114,6 +114,10 @@ public class AddressBook {
 		//Looping through the database to print all data
 	}
 	
+	/**
+	 * Method used to display a single Person object.
+	 * @param p used as the Preson in database
+	 */
 	public void displayOne(Person p) {
 		final int spacesBetweenWords = 3;
 		final int nameLength = 4;
