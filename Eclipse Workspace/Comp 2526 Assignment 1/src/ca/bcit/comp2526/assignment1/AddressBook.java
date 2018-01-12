@@ -47,13 +47,17 @@ public class AddressBook {
 		Person[] temp = new Person[pos];
 		//Creating new array that will become the new database
 		
-		for (int i = 0; i < database.length; i++) {
-			temp[i] = database[i];
+		if (pos == 1) {
+			temp[0] = p;
+		} else {
+			for (int i = 0; i < database.length; i++) {
+				temp[i] = database[i];
+			}
+			//Copying the previous names from the old array
+			
+			temp[pos - 1] = p;
+			//Adding new name
 		}
-		//Copying the previous names from the old array
-		
-		temp[pos - 1] = p;
-		//Adding new name
 		
 		database = temp;
 	}
@@ -64,15 +68,13 @@ public class AddressBook {
 	 * @return integer of location in the array
 	 */
 	public int search(final String name) {
-		int pos = 0;
+		
 		for (int i = 0; i < database.length; i++) {
 			if (database[i].getName().equalsIgnoreCase(name)) {
-				pos = i;
-			} else {
-				pos = -1;
+				return i;
 			}
 		}
-		return pos;
+		return -1;
 		//returns negative if name not found
 	}
 
@@ -129,7 +131,7 @@ public class AddressBook {
 		+ "Phone Number");
 		//Using the specific spacing for table headers
 		
-		spaces = p.getName().length() + spacesBetweenWords;
+		spaces = spacesBetweenWords;
 		//Calculating spaces between data
 		
 		System.out.println(p.getName() 
